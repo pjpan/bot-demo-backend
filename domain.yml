@@ -1,7 +1,8 @@
 version: "3.1"
 
 intents:
-  - greet
+  - greet:
+      use_entities: []  # 设置不使用entities
   - goodbye
   - affirm
   - deny
@@ -15,6 +16,8 @@ intents:
   - weather_address_date-time
   - weather_address
   - weather_date-time
+  - confirm_weather_intent
+  - trip
 
 entities:
   - cuisine
@@ -28,17 +31,17 @@ entities:
 
 slots:
   address:
-    type: text
+    type: any
     mappings:
     - type: from_entity
-      entity: GPE,LOC
+      entity: GPE
   date-time:
-    type: text
+    type: any
     mappings:
       - type: from_entity
         entity: DATE
   cuisine:
-    type: text
+    type: any
     mappings:
     - type: from_entity
       entity: cuisine
@@ -47,20 +50,26 @@ slots:
     mappings:
     - type: from_entity
       entity: CARDINAL
+
 forms:
   restaurant_form:
     required_slots:
         - cuisine
         - num_people
+  weather_form:
+    ignored_intents:
+      - faq
+    required_slots:
+        - address
 
 actions:
   - action_send_feishu_msg
   - action_lookup_weather
   - utter_report_weather
+  - action_search_coin_history
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
   - text: "你好啊"
   - text: "特别好"
     buttons:
@@ -70,14 +79,14 @@ responses:
         payload: "/mood_unhappy"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
+  - text: "让我们来庆祝一下:"
     image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "有帮到你吗？"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "好的，继续加油"
 
   utter_goodbye:
   - text: "Bye"
@@ -87,6 +96,15 @@ responses:
   - text: "我是加电小能，今年1岁了"
   - text: "我是超级赛亚人"
 
+  utter_ask_continue:
+  - text: "要继续吗"
+
+  utter_trip:
+  - text: "你要查询{address}的景点吗？"
+
+  utter_confirm_bugreport:
+  - text: "请描述一下你的问题？"
+
   utter_faq/charge_how_touse:
   - text:  "车辆处于未启动状态，插上充电枪，听到“咔哒”卡扣声后，建议使用Nio APP，加电APP，蔚来加电微信小程序扫码启动充电"
 
@@ -94,7 +112,7 @@ responses:
   - text:  "对社会车辆开放。但是部分车辆（特斯拉、理想或者面包车等）存在无法成功充电的情况，如多次尝试仍无法启动，建议更换桩群"
 
   utter_faq/charge_unlock:
-    - text: "1、App充电地图搜索场站点击“降地锁”；2、现场扫码降地锁；3、车牌自动识别"
+    - text: "1、App充电地图搜索场站点击“降地锁”；\n 2、现场扫码降地锁；3、车牌自动识别"
       image: "https://i.imgur.com/vwv7aHN.png"
 
   utter_faq/swap_to_charge:
@@ -114,17 +132,18 @@ responses:
   - text:  "用户自费购买，年包：10,800元/年，月包：980元/月；包含每月15次一键加电；电量总计 1,000 度/月"
 
   utter_faq/charge_lock:
-  - text:  "1、充电订单结束 、或重新扫启动并停止  2、桩的侧面急停按钮按下   3.锁车解锁车辆在拔枪。4、物理解锁充电枪，用细铁棍捅解锁孔"
+  - text:  "1、充电订单结束 、或重新扫启动并停止 \n 2、桩的侧面急停按钮按下  \n 3.锁车解锁车辆在拔枪。4、物理解锁充电枪，用细铁棍捅解锁孔"
 
   utter_phone_call:
-  - text: "请拨打电话：400500600"
+  - text: "请拨打电话：400800600"
 
   utter_default:
   - text: "小瓦没有听懂呢"
 
   utter_report_weather:
-  - text: "{matches}"
+  - text: "{address} 天气是："
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+

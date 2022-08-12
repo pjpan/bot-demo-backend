@@ -7,19 +7,16 @@ nlu:
     - hello
     - hi
     - hello there
-    - good morning
-    - good evening
     - moin
     - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
     - 你好
     - 你人在吗？
     - 我想咨询问题？
     - 我找人
+    - 早啊
+    - 中午好
+    - 下午好
+    - 晚上好
 
 - intent: goodbye
   examples: |
@@ -36,6 +33,34 @@ nlu:
     - 再见
     - 回见
     - 后会无期
+
+- intent: stop
+  examples: |
+    - 你不能帮我
+    - 呸，你根本不能帮我
+    - 换人，下一个
+    - 你不能帮我解决问题
+    - 你不行啊
+    - 我知道了，你不行啊
+    - 不是我要的
+    - 我知道了，但是没用
+    - 不行，完全没用
+    - 真的没用啊
+    - 你在说啥，换一个
+    - 我觉得你不能帮我
+    - 退出去
+    - 停
+    - 重来
+    - 你在说啥哦
+    - 你怕是在开玩笑
+    - 那是啥
+    - 还有啥
+    - 天气太热了
+
+- intent: 试试按钮
+  examples: |
+    - 按钮功能
+    - 试试按钮
 
 - intent: affirm
   examples: |
@@ -66,56 +91,33 @@ nlu:
 
 - intent: mood_great
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
     - 开心的
     - 非常开心
     - 非常好
     - 我好开心
+    - 今天很开心
+    - 今天超级开心
+    - 今天心情很好
 
 - intent: mood_unhappy
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
     - 不开心
     - 我很不开心
     - 伤心
     - 我很伤心
+    - 心情不美丽
 
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
     - 你是个机器人吗
     - 你是人吗？
     - 你结婚了吗？
     - 你有没有女朋友？
+    - 你是机器人吗
+    - 我在和机器人说话
+    - 我去，你是个机器人
+    - 你是真人吗
+    - 真人
 
 - intent: faq/charge_how_touse
   examples: |
@@ -124,6 +126,13 @@ nlu:
     - 充电桩怎么用？
     - 怎么用充电桩？
     - 怎么加电？
+
+- synonym: 加电
+  examples: |
+    - 补能
+    - 换电
+    - 充电
+    - 家电
 
 - intent: faq/charge_isopen
   examples: |
@@ -176,28 +185,57 @@ nlu:
   examples: |
     - 咨询电话是多少
     - 电话是多少
+    - 我要求救？
 
 - intent: bug_feedback
   examples: |
     - 我要反馈问题
-    - OCC的人在吗？
     - [谁谁](PERSON)在吗？
-    - 蔚来的人在吗？
     - 我想反馈问题
     - 我找[某人](PERSON)反馈问题
+    - 问题是加电不给力
+    - 我要反馈的问题是今天天气太热了
+    - 我想反馈的问题是换电站今天出问题了，但是没给我换电
+    - 我遇到的问题是今天去换电站换电，发生了故障，导致我无法换电成功
+
+- intent: trip
+  examples: |
+    - 我想去[上海](address)
+    - 我想去[北京](address)
+    - 我要去[上海](address)
+    - 我要去[北京](address)
+    - 想去[上海](address)玩一玩
+    - 想去[北京](address)玩一玩
 
 - intent: weather
   examples: |
-    - [今天](date-time)天气怎么样
     - [今天](date-time)的天气
     - [上海](address)[今天](date-time)的天气怎么样
     - 我要[上海](address)[明天](date-time)的天气
     - [上海](address)[昨天](date-time)的天气
     - [上海](address)[前天](date-time)的天气
-    - [下星期](date-time)在[北京)](address)的呢
+    - [下星期](date-time)[北京)](address)呢
     - [沈阳](address)[五天后](date-time)天气
-    - 还有[明天](date-time)
-    - 能不能看下[星期五](date-time)
     - [北京](address)本周会不会阴雨
     - [三天](date-time)后在[武汉](address)呢？
-    - [厦门](address)如何？
+    - [上海](address)今天冷不冷？
+    - [上海](address)今天热不热？
+
+- intent: weather_ask_again
+  examples: |
+    - [成都](city)呢
+    - 那[成都](city)呢
+    - [成都](city)如何呢
+    - [成都](city)怎样呢
+    - 那[成都](city)如何呢
+    - 那[成都](city)怎样呢
+
+- intent: 查币
+  examples: |
+    - [BTC](coin_name)价格
+    - [BTC](coin_name)趋势
+    - [BTC](coin_name)分时图
+    - 帮我看一下[BTC](coin_name)趋势
+- synonym: BTC
+  examples: |
+    - 比特币

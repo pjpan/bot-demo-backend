@@ -11,6 +11,16 @@ rules:
   - intent: greet
   - action: utter_greet
 
+#- rule: greet happy
+#  steps:
+#  - intent: mood_great
+#  - action: utter_happy
+##
+#- rule: greet unhappy
+#  steps:
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
@@ -21,27 +31,43 @@ rules:
   - intent: faq
   - action: utter_faq
 
-- rule: response to feedback
-  steps:
-  - intent: bug_feedback
-  - action: action_send_feishu_msg
+#- rule: response to feedback
+#  steps:
+#  - intent: bug_feedback
+#  - action: action_send_feishu_msg
 
 - rule: make a phone call
   steps:
   - intent: phone_call
   - action: utter_phone_call
 
-- rule: lookup weather
-  steps:
-  - intent: weather
-  - action: action_lookup_weather
-
 - rule: don't understand
   steps:
   - intent: nlu_fallback
   - action: utter_default
 
-#- rule: response to chitchat
-#  steps:
-#  - intent: chitchat
-#  - action: utter_chitchat
+- rule: Activate form
+  steps:
+  - intent: weather
+  - action: weather_form
+  - active_loop: weather_form
+
+- rule: lookup weather
+  condition:
+  - active_loop: weather_form
+  steps:
+  - action: weather_form
+  - active_loop: null
+  - action: action_lookup_weather
+
+- rule: search trip
+  steps:
+    - intent: trip
+    - action: utter_trip
+    - action: utter_phone_call
+
+
+- rule: 查币
+  steps:
+    - intent: 查币
+    - action: action_search_coin_history

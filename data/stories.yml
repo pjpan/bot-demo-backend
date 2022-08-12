@@ -31,5 +31,22 @@ stories:
 - story: send feedback questions
   steps:
   - intent: bug_feedback
-  - action:
+  - action: utter_confirm_bugreport
+  - intent: bug_feedback
   - action: action_send_feishu_msg
+
+#- story: search trip
+#  steps:
+#    - intent: trip
+#    - action: utter_trip
+##    - slot_was_set:
+##        - address: false
+##    - intent: affirm
+##    - action: utter_phone_call
+
+#- story: lookup weather
+#  steps:
+#  - intent: weather
+#  - action: action_lookup_weather
+#  - slot_was_set:
+#      - address: false
