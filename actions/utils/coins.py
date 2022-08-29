@@ -14,6 +14,7 @@ from typing import Any, Dict, List
 import matplotlib.pyplot as plt
 import pandas as pd
 import pytz
+import altair as alt
 
 from actions.utils.request import get
 
@@ -62,6 +63,10 @@ class Ploter:
     @classmethod
     def plot_line_chat(cls, data: pd.DataFrame, to_type: str = "base64") -> str:
         plt.figure(figsize=(12, 6))
+        # alt.Chart(data).mark_line().encode(
+        #     x='timestamp',
+        #     y=''
+        # )
         plt.plot("timestamp", "price", data=data, marker="o")
         plt.plot(data["mean"], "g--", label="mean price")
         plt.legend()
@@ -88,6 +93,7 @@ if __name__ == '__main__':
 
     history = asyncio.run(CoinSearcher().get_history())
     print(history)
+    # CoinDataManager().get_img()
     # history = [{'timestamp': '2021-05-09T11:00:00Z', 'price': 58154.54, 'volume_24h': 64815608951,
     #             'market_cap': 1087757589631},
     #            {'timestamp': '2021-05-09T12:00:00Z', 'price': 57459.75, 'volume_24h': 65527707659,

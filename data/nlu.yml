@@ -106,6 +106,8 @@ nlu:
     - 伤心
     - 我很伤心
     - 心情不美丽
+    - 心情不好
+    - 非常不开心
 
 - intent: bot_challenge
   examples: |
@@ -117,7 +119,7 @@ nlu:
     - 我在和机器人说话
     - 我去，你是个机器人
     - 你是真人吗
-    - 真人
+    - 真人吗？
 
 - intent: faq/charge_how_touse
   examples: |

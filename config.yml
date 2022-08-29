@@ -5,7 +5,6 @@ recipe: default.v1
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
 language: zh
-
 pipeline:
   - name:  SpacyNLP
     model: zh_core_web_md
@@ -36,7 +35,7 @@ pipeline:
     epochs: 100
     retrieval_intent: faq
   - name: FallbackClassifier
-    threshold: 0.3
+    threshold: 0.5
     ambiguity_threshold: 0.1
 #  - name: ResponseSelector
 #    epochs: 100
