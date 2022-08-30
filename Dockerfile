@@ -4,7 +4,7 @@ FROM rasa/rasa:latest
 COPY . /app
 WORKDIR /app
 # RUN apt-get install -y gcc # 有gcc缺失时可以打开
-RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+RUN pip install --upgrade pip && pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
 
 ENTRYPOINT ["rasa"]
 CMD ["run", "--cors", "*"]
