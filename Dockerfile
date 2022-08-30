@@ -1,10 +1,12 @@
 FROM rasa/rasa:latest
-#FROM ubuntu:20.04
-# USER root  # 权限不足时打开
-
+WORKDIR '/app'
 COPY . /app
-WORKDIR /app
-#RUN apt-get install -y gcc && RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
-
-ENTRYPOINT ["rasa"]
-CMD ["run", "--cors", "*"]
+USER root
+# WORKDIR /app
+# COPY . /app
+COPY ./data /app/data
+RUN rasa train
+VOLUME /app
+VOLUME /app/data
+VOLUME /app/models
+CMD ["run","-m","/app/models","--enable-api","--cors","*","--debug" ,"--endpoints", "endpoints.yml", "--log-file", "out.log", "--debug"]
