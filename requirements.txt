@@ -8,3 +8,4 @@ aiohttp==3.6.3
 matplotlib==3.3.3
 pytz==2020.4
 spacy==3.2.4
+jieba
