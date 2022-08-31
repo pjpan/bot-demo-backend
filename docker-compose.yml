@@ -1,28 +1,27 @@
 version: '3.0'
 services:
   rasa:
-    image: rasa/rasa:3.2.5-full
-#    networks: ['rasa-network']
+    image: rasa_backend:1.0.0
+    networks: ['rasa-network']
     ports:
-      - 5005:5005
+      - "5005:5005"
     volumes:
       - ./:/app
-    command:
-      - run
-  app:
-    image: <image:tag>
-    expose: 5055
-
+#    command:
+#      - run
+  action_server:
+    image: rasa_back_sdk:1.0.0
+    networks: ['rasa-network']
+    ports:
+      - "5055:5055"
   action_endpoint:
     url: http://app:5055/webhook
-#
-  redis:
-    image: redis:latest
+##
+#  redis:
+#    image: redis:latest
 
-networks: {rasa-network: {}}
-
-frontend:
-
+#networks: {rasa-network: {}}
+#frontend:
 
 #version: '3.0'
 #
