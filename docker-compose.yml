@@ -6,12 +6,12 @@ services:
     ports:
       - "5005:5005"
     depends_on:
-      - action_server
+      - action-server
 #    volumes:
 #      - ./:/app
 #    command:
 #      - run
-  action_server:
+  action-server:
     image: rasa_back_sdk:1.0.0
 #    networks: ['rasa-network']
     ports:
