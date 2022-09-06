@@ -1,10 +1,17 @@
-# version: '1.0'
+version: '3.0'
 services:
+  frontend:
+    image: rasa_fronted:1.0.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rasa
   rasa:
-    image: rasa_backend:1.0.0
+    image: rasa_backend:1.0.1
 #    networks: ['rasa-network']
     ports:
       - "5005:5005"
+      - "5055:5055"
     depends_on:
       - action-server
 #    volumes:
