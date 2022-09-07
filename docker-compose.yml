@@ -2,6 +2,7 @@ version: '3.0'
 services:
   frontend:
     image: rasa_fronted:1.0.0
+    restart: always
     networks: ['rasa-network']
     ports:
       - "3000:3000"
@@ -9,13 +10,14 @@ services:
       - rasa
   rasa:
     image: rasa_backend:1.0.1
+    restart: always
     networks: ['rasa-network']
     ports:
       - "5005:5005"
       - "5055:5055"
 #      - "3000:3000"
-    depends_on:
-      - action-server
+#    depends_on:
+#      - action-server
     volumes:
       - ./:/app
 #    command:
