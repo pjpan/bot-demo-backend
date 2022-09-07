@@ -5,7 +5,7 @@ USER root
 # WORKDIR /app
 COPY . /app
 RUN rm -rf /app/.git
-RUN #pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
 #RUN pip install -r requirements.txt -i http://nexus.nevint.com/repository/pypi-all/simple --trusted-host nexus.nevint.com
 RUN curl -fsSL  https://github.com/explosion/spacy-models/releases/download/zh_core_web_md-3.4.0/zh_core_web_md-3.4.0.tar.gz -o zh_core_web_md-3.4.0.tar.gz
 # RUN python -m spacy download zh_core_web_md
