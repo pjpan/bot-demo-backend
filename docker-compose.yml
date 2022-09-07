@@ -13,7 +13,7 @@ services:
     ports:
       - "5005:5005"
       - "5055:5055"
-      - "3000:3000"
+#      - "3000:3000"
     depends_on:
       - action-server
     volumes:
@@ -21,10 +21,14 @@ services:
 #    command:
 #      - run
   action-server:
-    image: rasa_back_sdk:1.0.0
+    image: rasa_backend_sdk:1.0.0
     networks: ['rasa-network']
+    volumes:
+      - './actions:/app/actions'
     ports:
       - "5055:5055"
+    depends_on:
+      - rasa
     container_name: action_server
 #  action_endpoint:
 #    url: http://action_server:5055/webhook
