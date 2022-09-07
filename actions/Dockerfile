@@ -5,3 +5,5 @@ USER root
 RUN pip install --verbose -r requirements.txt -i http://nexus.nevint.com/repository/pypi-all/simple --trusted-host nexus.nevint.com
 EXPOSE 5055
 USER 1001
+ENTRYPOINT ["/bin/bash"]
+CMD ["rasa run actions"]
