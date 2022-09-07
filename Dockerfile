@@ -17,7 +17,7 @@ RUN rasa train
 VOLUME /app
 VOLUME /app/data
 VOLUME /app/models
-#ENTRYPOINT ["/bin/bash"]
-#CMD ["start.sh"]
-ENTRYPOINT ["rasa"]
-CMD ["run","-m","/app/models","--enable-api","--cors","*","--debug" ,"--endpoints", "endpoints.yml", "--log-file", "out.log", "--debug"]
+ENTRYPOINT ["/bin/bash"]
+CMD ["start.sh"]
+#ENTRYPOINT ["rasa"]
+#CMD ["run","-m","/app/models","--enable-api","--cors","*","--debug" ,"--endpoints", "endpoints.yml", "--log-file", "out.log", "--debug"]

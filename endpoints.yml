@@ -11,8 +11,8 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-#  url: "http://0.0.0.0:5055/webhook"
-  url: http://action_server:5055/webhook
+  url: "http://0.0.0.0:5055/webhook"
+#  url: http://action_server:5055/webhook
 #  url: "https://open.feishu.cn/open-apis/bot/v2/hook"
 #  secret: "gJamvilRaRB3qKfyNqFx9c"
 

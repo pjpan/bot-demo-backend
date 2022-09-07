@@ -20,18 +20,18 @@ services:
       - ./:/app
 #    command:
 #      - run
-  action-server:
-    image: rasa_backend_sdk:1.0.0
-    networks: ['rasa-network']
-    volumes:
-      - './actions:/app/actions'
-    ports:
-      - "5055:5055"
-    depends_on:
-      - rasa
-    container_name: action_server
-  action_endpoint:
-    url: http://action_server:5055/webhook
+#  action-server:
+#    image: rasa_backend_sdk:1.0.0
+#    networks: ['rasa-network']
+#    volumes:
+#      - './actions:/app/actions'
+#    ports:
+#      - "5055:5055"
+#    depends_on:
+#      - rasa
+#    container_name: action_server
+#  action_endpoint:
+#    url: http://action_server:5055/webhook
 ##
 #  redis:
 #    image: redis:latest
