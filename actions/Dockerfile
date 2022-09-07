@@ -6,5 +6,5 @@ RUN pip install --verbose -r requirements.txt -i http://nexus.nevint.com/reposit
 COPY . /app/actions
 EXPOSE 5055
 USER 1001
-#ENTRYPOINT ["/bin/bash"]
-#CMD ["rasa run actions"]
+ENTRYPOINT ["rasa"]
+CMD [" run actions"]
